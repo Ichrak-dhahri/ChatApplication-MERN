@@ -6,7 +6,9 @@ import authRoutes from "./routes/auth.routes.js";
 import messageRoutes from "./routes/message.routes.js";
 import connectToMongoDB from "./db/connectToMongoDB.js";
 import userRoutes from "./routes/user.routes.js"
-const app = express();
+import { app, server } from "./Socket/socket.js";
+
+
 const PORT = process.env.PORT || 5000;
 // Replace this line with your MongoDB URI
 const MONGO_DB_URI = "mongodb+srv://ichrak1dhahri:4h7rNTIMDn3vjtrj@cluster0.lfcw0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
@@ -16,7 +18,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
 //connect to db 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     connectToMongoDB(MONGO_DB_URI); // Pass MONGO_DB_URI directly here
     console.log(`Server running on port ${PORT}`);
 });

@@ -9,7 +9,6 @@ const useSendMessage = () => {
 	const sendMessage = async (message) => {
 		setLoading(true);
 		try {
-            //function to send a message with the id of the selected item
 			const res = await fetch(`/api/messages/send/${selectedConversation._id}`, {
 				method: "POST",
 				headers: {
@@ -20,7 +19,7 @@ const useSendMessage = () => {
 			const data = await res.json();
 			if (data.error) throw new Error(data.error);
 
-			setMessages([...messages, data]);//...messages means having all the previos messages and adding the new ones 
+			setMessages([...messages, data]);//the previous messages and the new messages
 		} catch (error) {
 			toast.error(error.message);
 		} finally {
@@ -30,4 +29,4 @@ const useSendMessage = () => {
 
 	return { sendMessage, loading };
 };
-export default useSendMessage; 
+export default useSendMessage;

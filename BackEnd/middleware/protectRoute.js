@@ -14,10 +14,8 @@ const protectRoute = async (req, res, next) => {
       if (!token) {
         return res.status(401).json({ error: "Unauthorized - No token Provided" });
       }
-  
-      const JWT_SECRET = "OTxRQCV5Y5F7yXUYREeUGj1BfttFkG6AlmgmSAUVtcE=";// used to verify the JWT
-      const decoded = jwt.verify(token, JWT_SECRET);//decodes the token to check its validity
-  
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);//decodes the token to check its validity
+      
       // Check if decoding the token was successful
       console.log("Decoded JWT:", decoded);
   

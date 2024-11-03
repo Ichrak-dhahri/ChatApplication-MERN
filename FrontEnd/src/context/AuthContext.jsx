@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 
 export const AuthContext = createContext();
+//This code is a React setup for managing and sharing authentication information across components
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const useAuthContext = () => {

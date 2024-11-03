@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import UserModel from "../models/user.model.js"
 import dotenv from "dotenv";
 
-
+//This middleware can be added to any route requiring authentication 
 const protectRoute = async (req, res, next) => {
     try {
       dotenv.config();
@@ -15,8 +15,8 @@ const protectRoute = async (req, res, next) => {
         return res.status(401).json({ error: "Unauthorized - No token Provided" });
       }
   
-      const JWT_SECRET = "AyB6Irq39OPxMV+M4VNYuDR4XDsaLAIqUMSfn5i2pTw=";
-      const decoded = jwt.verify(token, JWT_SECRET);
+      const JWT_SECRET = "OTxRQCV5Y5F7yXUYREeUGj1BfttFkG6AlmgmSAUVtcE=";// used to verify the JWT
+      const decoded = jwt.verify(token, JWT_SECRET);//decodes the token to check its validity
   
       // Check if decoding the token was successful
       console.log("Decoded JWT:", decoded);
